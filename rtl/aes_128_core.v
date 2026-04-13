@@ -20,7 +20,7 @@ module aes_128_core (
     // --- 1. Key Expansion Block (FIPS 197 Sec 5.2) ---
     // Yeh 128-bit key ko 11 round keys mein expand karega
     aes_key_expansion_128 key_gen (
-        .key_in(key),
+        .original_key(key),
         .key_schedule(full_key_schedule)
     );
 
@@ -42,12 +42,27 @@ module aes_128_core (
     assign next_state = (round_counter == 0) ? (plaintext ^ round_key_in) : round_out;
 
     // --- 4. Aapka State Matrix (Memory Register for 'State') ---
+    // Pehle 16 wires banate hain in 8-bit outputs ko catch karne ke liye
+    wire [7:0] w_s00, w_s10, w_s20, w_s30;
+    wire [7:0] w_s01, w_s11, w_s21, w_s31;
+    wire [7:0] w_s02, w_s12, w_s22, w_s32;
+    wire [7:0] w_s03, w_s13, w_s23, w_s33;
+
     aes_state_matrix state_reg (
         .clk(clk),
-        .rst(rst),
-        .state_in(next_state),
-        .state_out(current_state)
+        .reset(rst),
+        .in_data(next_state),
+        .s00(w_s00), .s10(w_s10), .s20(w_s20), .s30(w_s30),
+        .s01(w_s01), .s11(w_s11), .s21(w_s21), .s31(w_s31),
+        .s02(w_s02), .s12(w_s12), .s22(w_s22), .s32(w_s32),
+        .s03(w_s03), .s13(w_s13), .s23(w_s23), .s33(w_s33)
     );
+
+    // FIPS 197 Section 3.4 ke anusar Column-Major order mein 128-bit wapas pack karna
+    assign current_state = {w_s00, w_s10, w_s20, w_s30, 
+                            w_s01, w_s11, w_s21, w_s31, 
+                            w_s02, w_s12, w_s22, w_s32, 
+                            w_s03, w_s13, w_s23, w_s33};
 
     // --- 5. The FSM (Control Unit) ---
     reg [1:0] state, next_fsm_state;
