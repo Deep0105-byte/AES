@@ -8,6 +8,7 @@ module mixcolumn_32bit (
         input [7:0] b;
         begin
             // FIPS 197 [1]: Agar bit 7 (MSB) 1 hai, toh left shift karke 8'h1b se XOR karo.
+        
             xtimes = (b[2] == 1'b1) ? ((b << 1) ^ 8'h1b) : (b << 1);
         end
     endfunction
