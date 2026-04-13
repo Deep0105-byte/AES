@@ -30,7 +30,7 @@ module tb_aes_sbox;
 
         // Final Check
         if (uut.out === 8'h16) // Aakhri test pass hua ya nahi
-            $display("\n>> RESULT: PASS! S-Box ab 100% FIPS compliant aur Row-Major hai.");
+            $display("\n>> RESULT: PASS! S-Box ab 100%% FIPS compliant aur Row-Major hai.");
         else
             $display("\n>> RESULT: FAIL!");
 
