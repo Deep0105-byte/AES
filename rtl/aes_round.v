@@ -18,9 +18,10 @@ module aes_round (
     );
 
     // 2. ShiftRows Transformation (FIPS 197 Sec 5.1.2)
+   
     aes_shiftrows sr_blk (
-        .state_in (sb_out),
-        .state_out(sr_out)
+        .in (sb_out),   // .state_in ki jagah .in karein
+        .out(sr_out)    // .state_out ki jagah .out karein
     );
 
     // 3. MixColumns Transformation (FIPS 197 Sec 5.1.3)
