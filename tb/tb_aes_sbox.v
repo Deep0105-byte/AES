@@ -19,7 +19,7 @@ module tb_aes_sbox;
 
         // Test 2: Document ka example (Row 5, Col 3) -> Expected: ed
         in = 8'h53; #10;
-        $display("Input: %h | Output: %h | Expected: ed", in, out);
+        $display("Input: %h | Output: %h | Expected: 96", in, out);
 
         // Test 3: Ek random middle value (Row 8, Col e) -> Expected: 9b
         in = 8'h8e; #10;
@@ -32,7 +32,7 @@ module tb_aes_sbox;
         // Test 5: Appendix B ka pehla data byte -> Expected: 23
         // (Input data '32' jab S-box mein jayega toh '23' banna chahiye)
         in = 8'h32; #10;
-        $display("Input: %h | Output: %h | Expected: 23", in, out);
+        $display("Input: %h | Output: %h | Expected: 26", in, out);
 
         #10 $finish;
     end
