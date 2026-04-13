@@ -30,3 +30,5 @@ module aes_mixcolumns (
         .in (state_in[31:0]),
         .out(state_out[31:0])
     );
+
+endmodule
