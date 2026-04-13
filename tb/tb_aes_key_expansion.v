@@ -13,6 +13,7 @@ module tb_aes_key_expansion;
     wire [127:0] round_0_key  = key_schedule[127:0];       // Original Key
     wire [127:0] round_1_key  = key_schedule[255:128];     // w[6] to w[7]
     wire [127:0] round_2_key  = key_schedule[383:256];     // w[8] to w[9]
+    wire [127:0] round_3_key = key_schedule[511:384];
     wire [127:0] round_10_key = key_schedule[1407:1280];   // w[10] to w[11]
 
     initial begin
@@ -39,6 +40,10 @@ module tb_aes_key_expansion;
         $display("\n[Round 2 Key]");
         $display("Expected : f2c295f27a96b9435935807a7359f67f");
         $display("Hardware : %h", round_2_key);
+
+        $display("\n[Round 3 Key]");
+        $display("Expected : 3d80477d4716fe3e1e237e446d7a883b");
+        $display("Hardware : %h", round_3_key);
 
         // Document mein Round 10 ki key (w[10], w[16], w[17], w[11])
         // d014f9a8 c9ee2589 e13f0cc8 b6630ca6
