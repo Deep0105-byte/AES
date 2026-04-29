@@ -49,7 +49,6 @@ module tb_aes_state_matrix;
         $display("|  %h   |  %h   |  %h   |  %h   |  <-- Row 3", s30, s31, s32, s33);
         $display("---------------------------------");
 
-        // Simulation Khatam
         #10 $finish;
     end
 endmodule

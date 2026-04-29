@@ -4,7 +4,6 @@ module aes_subbytes (
 );
 
     // FIPS 197 Section 5.1.1: S-Box is applied independently to each byte.
-    // Hum 128-bit ki wire ko 8-bit ke 16 tukdon mein kaat kar 16 S-Boxes mein daal rahe hain.
 
     // Column 0
     aes_sbox sbox_00 ( .in(state_in[127:120]), .out(state_out[127:120]) );

@@ -7,13 +7,11 @@ module mixcolumn_32bit (
     function [7:0] xtimes;
         input [7:0] b;
         begin
-            // FIPS 197 [1]: Agar bit 7 (MSB) 1 hai, toh left shift karke 8'h1b se XOR karo.
             
             xtimes = (b[ 7 ] == 1'b1) ? ((b << 1) ^ 8'h1b) : (b << 1);
         end
     endfunction
 
-    // 32-bit column ko 4 bytes mein todna
     wire [7:0] s0, s1, s2, s3;
     assign s0 = in[31:24];
     assign s1 = in[23:16];
@@ -28,7 +26,6 @@ module mixcolumn_32bit (
     assign out2 = s0 ^ s1 ^ xtimes(s2) ^ (xtimes(s3) ^ s3);
     assign out3 = (xtimes(s0) ^ s0) ^ s1 ^ s2 ^ xtimes(s3);
 
-    // Output assemble karna
     assign out = {out0, out1, out2, out3};
 
 endmodule

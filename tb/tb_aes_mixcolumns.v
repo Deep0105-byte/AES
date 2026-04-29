@@ -21,9 +21,9 @@ module tb_aes_mixcolumns;
         
         // FIPS 197 Appendix B: Round 1 'After MixColumns' expected data check
         if (state_out === 128'h046681e5e0cb199a48f8d37a2806264c)
-            $display("\n>> RESULT: PASS! MixColumns ki Galois Field math ekdum perfect hai!");
-        else
-            $display("\n>> RESULT: FAIL! Koi XOR gate ya XTIMES logic miss ho gaya.");
+            $display("\n>> RESULT: PASS! MixColumns");
+        else                                                            
+            $display("\n>> RESULT: FAIL! ");
 
         #10 $finish;
     end

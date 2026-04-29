@@ -23,11 +23,10 @@ module tb_aes_addroundkey;
         $display("Expected Out : 193de3bea0f4e22b9ac68d2ae9f84808");
         $display("Hardware Out : %h", state_out);
         
-        // FIPS 197 Appendix B: 'Start of Round 1' expected data check
         if (state_out === 128'h193de3bea0f4e22b9ac68d2ae9f84808)
-            $display("\n>> RESULT: PASS! AddRoundKey ki XOR wiring ekdum perfect hai!");
+            $display("\n>> RESULT: PASS! ");
         else
-            $display("\n>> RESULT: FAIL! Data mismatch.");
+            $display("\n>> RESULT: FAIL! .");
 
         #10 $finish;
     end
