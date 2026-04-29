@@ -52,5 +52,8 @@ module tb_aes_128_core;
             $display("\n>> RESULT: FAIL! ");
 
         #20 $finish;
+
+        $dumpfile("aes.vcd");
+        $dumpvars(0, tb_aes_128_core);
     end
 endmodule
