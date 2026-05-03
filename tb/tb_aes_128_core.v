@@ -52,8 +52,7 @@ module tb_aes_128_core;
             $display("\n>> RESULT: FAIL! ");
 
         #20 $finish;
-
-        
+ 
         $fsdbDumpfile("aes_waves.fsdb");
         $fsdbDumpvars(0, tb_aes_128_core);
     end
