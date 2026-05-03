@@ -53,7 +53,8 @@ module tb_aes_128_core;
 
         #20 $finish;
 
-        $dumpfile("aes.vcd");
-        $dumpvars(0, tb_aes_128_core);
+        
+        $fsdbDumpfile("aes_waves.fsdb");
+        $fsdbDumpvars(0, tb_aes_128_core);
     end
 endmodule
